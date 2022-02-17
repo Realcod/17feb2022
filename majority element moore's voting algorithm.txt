@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+
+int majority(int arr[],int n){
+	int index=0,count=1;
+	for(int i=1;i<n;i++){
+		if(arr[i]==arr[index])
+		   count++;
+		else
+		   count--;
+		   
+		if(count==0){
+			index=i;
+			count=1;
+		}
+	}
+	int count1=0;
+	for(int i=0;i<n;i++){
+		if(arr[index]==arr[i])
+		   count1++;
+	}
+	if(count1>n/2)
+		 return arr[index];
+}
+
+int main(){
+	int n,arr[100];
+	cout<<"Enter the size of the array"<<endl;
+	cin>>n;
+	
+	cout<<"Enter the elements in the array"<<endl;
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+	
+	int maxelement=majority(arr,n);
+	cout<<maxelement;
+}
